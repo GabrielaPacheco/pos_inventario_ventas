@@ -1,1 +1,9 @@
 # pos_inventario_ventas
+
+Sistema POS(Point of Sale) inventarios y ventas con PHP 8 y AdminLTE integrando varios recursos bajo el patrón Modelo-Vista-Controlador con Programación Orientada a Objetos y utilizando bases de datos MySQL.
+
+Herramientas que se están utilizando y se van a ir agregando más:
+
+Plantilla AdminLTE: Excelente plantilla «open source» para la creación de software responsivos.
+jQuery DataTable: Plugin para la creación de tablas dinámicas.
+Muchas más herramientas: jQuery Number, iCheck, SweetAlert2, Fast Click, Ionicons, HTML5, CSS3, entre otras.
