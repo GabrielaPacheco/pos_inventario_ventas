@@ -9,8 +9,7 @@
 
         <!-- logo normal -->
         <span class="logo-lg">
-            <img src="views/img/plantilla/logo-blanco-lineal.png" alt="" class="img-responsive"
-                style="padding:10px 0px;">
+            <img src="views/img/plantilla/logo-blanco-lineal.png" alt="" class="img-responsive" style="padding:10px 0px;">
         </span>
     </a>
 
@@ -27,8 +26,16 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="views/img/default/anonymous.png" class="user-image">
-                        <span class="hidden-xs">Usuario Administrador</span>
+
+                        <!-- VALIDANDO SI TIENE FOTO POR DEFECTO O SI YA POSEE FOTO GUARDADA EN BASE DE DATOS -->
+                        <?php
+                        if ($_SESSION["foto"] != "") {
+                            echo ' <img src="' . $_SESSION["foto"] . '" class="user-image">';
+                        } else {
+                            echo '<img src="views/img/default/anonymous.png" class="user-image">';
+                        }
+                        ?>
+                        <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?></span>
                     </a>
                     <!-- Dropdown-toggle -->
                     <ul class="dropdown-menu">

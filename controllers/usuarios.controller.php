@@ -29,7 +29,18 @@ class ControladorUsuarios
                     is_array($respuesta) && $respuesta["usuario"] == $_POST["ingUsuario"] &&
                     $respuesta["password"] == $encriptar
                 ) {
+                    // CREANDO SESION PARA INGRESAR AL SISTEMA 
                     $_SESSION["iniciarSesion"] = "ok";
+
+                    //CREANDO VARIABLES DE SESION PARA CONOCER CUAL DE TODOS LOS USUARIOS HA INGRESADO AL SISTEMA
+                    // Y MANTIENE LA SESION INICIADA
+                    $_SESSION["id"] = $respuesta["id"];
+                    $_SESSION["nombre"] = $respuesta["nombre"];
+                    $_SESSION["usuario"] = $respuesta["usuario"];
+                    $_SESSION["foto"] = $respuesta["foto"];
+                    $_SESSION["perfil"] = $respuesta["perfil"];
+
+                    // REDIRECCIONANDO A PAGINA DE INICIO AL INGRESAR AL SISTEMA
                     echo '<script> 
                     window.location = "inicio"; 
                     </script>';
