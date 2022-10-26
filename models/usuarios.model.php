@@ -12,22 +12,25 @@ class ModeloUsuarios
         $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR); //ENLAZANDO PARAMETRO
         $stmt->execute();
         return $stmt->fetch(); //RETORNANDO UN SOLO ITEM DE NUESTRA TABLA
+        $stmt = null;
     }
 
     // REGISTRO DE USUARIO
     static public function mdlIngresarUsuario($tabla, $datos)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, usuario, password, perfil) VALUES (:nombre, :usuario, :password, :perfil)"); //SE DEBE DE ENLAZAR PARAMETRO $item
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, usuario, password, perfil, foto) VALUES (:nombre, 
+        :usuario, :password, :perfil, :foto)"); //SE DEBE DE ENLAZAR PARAMETRO $item
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
         $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
         $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+        $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
 
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             return "ok";
-        }
-        else{
+        } else {
             return "error";
         }
+        $stmt = null;
     }
 }
