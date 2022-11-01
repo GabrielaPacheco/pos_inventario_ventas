@@ -56,10 +56,41 @@ $(".btnEditarUsuario").click(function () {
       $("#fotoActual").val(respuesta["foto"]);
 
       $("#passwordActual").val(respuesta["password"]);
-//CARGANDO FOTO AL MODAL DE EDITAR USUARIO QUE TIENE EN BASE DE DATOS
+      //CARGANDO FOTO AL MODAL DE EDITAR USUARIO QUE TIENE EN BASE DE DATOS
       if (respuesta["foto"] != "") {
         $(".previsualizar").attr("src", respuesta["foto"]);
       }
     },
   });
+});
+
+//ACTIVAR USUARIO
+$(".btnActivar").click(function () {
+  var idUsuario = $(this).attr("idUsuario");
+  var estadoUsuario = $(this).attr("estadoUsuario");
+
+  var datos = new FormData();
+  datos.append("activarId", idUsuario);
+  datos.append("activarUsuario", estadoUsuario);
+  $.ajax({
+    url: "ajax/usuarios.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (respuesta) {},
+  });
+  if (estadoUsuario == 0) {
+    $(this).removeClass("btn-success");
+    $(this).addClass("btn-danger");
+    $(this).html("Desactivado");
+    $(this).attr("estadoUsuario", 1);
+  }
+  else{
+    $(this).removeClass("btn-danger");
+    $(this).addClass("btn-success");
+    $(this).html("Activado");
+    $(this).attr("estadoUsuario", 0);
+  }
 });

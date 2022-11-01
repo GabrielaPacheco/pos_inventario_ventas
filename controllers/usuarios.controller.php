@@ -29,21 +29,28 @@ class ControladorUsuarios
                     is_array($respuesta) && $respuesta["usuario"] == $_POST["ingUsuario"] &&
                     $respuesta["password"] == $encriptar
                 ) {
-                    // CREANDO SESION PARA INGRESAR AL SISTEMA 
-                    $_SESSION["iniciarSesion"] = "ok";
+                    //VALIDANDO QUE SOLAMENTE LOS USUARIOS CON ESTADO ACITVADO INGRESEN AL SISTEMA
+                    if ($respuesta["estado"] == 1) {
 
-                    //CREANDO VARIABLES DE SESION PARA CONOCER CUAL DE TODOS LOS USUARIOS HA INGRESADO AL SISTEMA
-                    // Y MANTIENE LA SESION INICIADA
-                    $_SESSION["id"] = $respuesta["id"];
-                    $_SESSION["nombre"] = $respuesta["nombre"];
-                    $_SESSION["usuario"] = $respuesta["usuario"];
-                    $_SESSION["foto"] = $respuesta["foto"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
+                        // CREANDO SESION PARA INGRESAR AL SISTEMA 
+                        $_SESSION["iniciarSesion"] = "ok";
 
-                    // REDIRECCIONANDO A PAGINA DE INICIO AL INGRESAR AL SISTEMA
-                    echo '<script> 
+                        //CREANDO VARIABLES DE SESION PARA CONOCER CUAL DE TODOS LOS USUARIOS HA INGRESADO AL SISTEMA
+                        // Y MANTIENE LA SESION INICIADA
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["foto"] = $respuesta["foto"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
+
+                        // REDIRECCIONANDO A PAGINA DE INICIO AL INGRESAR AL SISTEMA
+                        echo '<script> 
                     window.location = "inicio"; 
                     </script>';
+                    }
+                    else{
+                        echo '<br><div class="alert alert-danger">El usuario aún no está activado.</div>';
+                    }
                 } else {
                     echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
                 }
@@ -172,7 +179,7 @@ class ControladorUsuarios
     }
 
     // EDITAR USUARIO
-     static public function ctrEditarUsuario()
+    static public function ctrEditarUsuario()
     {
         if (isset($_POST["editarUsuario"])) {
             if (
@@ -220,7 +227,7 @@ class ControladorUsuarios
                         imagepng($destino, $ruta);
                     }
                 }
-                
+
                 $tabla = "usuarios";
 
                 // SI EDITAR PASSWORD TRAE INFORMACION PORQUE SE CAMBIA LA CONTRASEÑA 
