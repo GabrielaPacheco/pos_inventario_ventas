@@ -89,7 +89,7 @@ class ControladorUsuarios
     {
         if (isset($_POST["nuevoUsuario"])) {
             if (
-                preg_match('/^[a-zA-Z0-9ñNáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])
             ) {
@@ -209,7 +209,7 @@ class ControladorUsuarios
     {
         if (isset($_POST["editarUsuario"])) {
             if (
-                preg_match('/^[a-zA-Z0-9ñNáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])
             ) {
                 // VALIDAR IMAGEN 
 
