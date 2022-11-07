@@ -35,7 +35,7 @@ if (isset($_POST["idCategoria"])) {
     $editar->ajaxEditarCategoria();
 }
 
-// VALIDAR NO REPETIR USUARIO YA QUE EL USUARIO ES UNICO
+// VALIDAR NO REPETIR CATEGORÍA YA QUE LA CATEGORÍA ES ÚNICO
 if (isset($_POST["validarCategoria"])) {
     $validarCategoria = new AjaxCategorias();
     $validarCategoria->validarCategoria = $_POST["validarCategoria"];
