@@ -26,7 +26,7 @@ class ModeloUsuarios
     static public function mdlIngresarUsuario($tabla, $datos)
     {
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, usuario, password, perfil, foto) VALUES (:nombre, 
-        :usuario, :password, :perfil, :foto)"); //SE DEBE DE ENLAZAR PARAMETRO $item
+        :usuario, :password, :perfil, :foto)");
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
         $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
         $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
@@ -39,7 +39,7 @@ class ModeloUsuarios
         }
         $stmt = null;
     }
-    // REGISTRO DE USUARIO
+    // EDITAR USUARIO
     static public function mdlEditarUsuario($tabla, $datos)
     {
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, password = :password, perfil = :perfil, foto = :foto WHERE usuario = :usuario");
