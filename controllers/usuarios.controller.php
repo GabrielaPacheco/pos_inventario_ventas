@@ -43,12 +43,38 @@ class ControladorUsuarios
                         $_SESSION["foto"] = $respuesta["foto"];
                         $_SESSION["perfil"] = $respuesta["perfil"];
 
-                        // REDIRECCIONANDO A PAGINA DE INICIO AL INGRESAR AL SISTEMA
-                        echo '<script> 
-                    window.location = "inicio"; 
-                    </script>';
-                    }
-                    else{
+                        //REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
+
+                        //DEFINIR ZONA HORARIA DE ACUERDO AL LUGAR DEL CONTINENTE/PAIS DONDE SE ENCUENTRE 
+                        // ESTE CASO COMO SE VIVE EN EL SALVADOR SE PONE
+
+                        date_default_timezone_set('America/El_Salvador');
+
+                        //FECHA EN FORMATO Y-M-D Y CON EL HORARIO H-M-S PORQUE ASI ESTA GUARDADO EN LA BASE DE DATOS 
+
+                        $fecha = date('Y-m-d');
+                        $hora = date('H:i:s');
+
+                        //INGRESANDO FECHA ACTUAL DE INGRESO Y CONCATENANDO CON HORA
+                        $fechaActual = $fecha . ' ' . $hora;
+
+                        //ASIGNANDO NUEVOS PARAMETROS PARA QUE SE ACTUALICE EL ULTIMO LOGIN 
+                        //EN NUESTRA BASE DE DATOS Y TENER MAS CONTROL DE QUIEN INGRESA Y CUANDO INGRESA
+                        $item1 = "ultimo_login";
+                        $valor1 = $fechaActual;
+                        $item2 = "id";
+                        $valor2 = $respuesta["id"];
+
+                        // ACTUALIZANDO INGRESO DEL ULTIMO LOGIN EN BASE DE DATOS, DEBE RETORNAR UN VALOR
+                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+
+                        if ($ultimoLogin == "ok") {
+                            // REDIRECCIONANDO A PAGINA DE INICIO AL INGRESAR AL SISTEMA
+                            echo '<script> 
+                                window.location = "inicio"; 
+                            </script>';
+                        }
+                    } else {
                         echo '<br><div class="alert alert-danger">El usuario aún no está activado.</div>';
                     }
                 } else {
@@ -312,6 +338,40 @@ class ControladorUsuarios
                     
                 });
 
+                </script>';
+            }
+        }
+    }
+
+    // BORRANDO AL USUARIO
+    static public function ctrEliminarUsuario()
+    {
+        //DE EXISTIR VARIABLES GET ENTONCES SE VERIFICA Y SE MANDA EL ID DE USUARIO
+        if (isset($_GET["idUsuario"])) {
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
+            if ($_GET["fotoUsuario"] != "") {
+                unlink($_GET["fotoUsuario"]);
+                rmdir('views/img/usuarios/' . $_GET["usuario"]);
+            }
+            $respuesta = ModeloUsuarios::mdlEliminarUsuario($tabla, $datos);
+            //EN CASO DE HACER CORRECTAMENTE LA CONSULTA APARECE LA ALERTA SWEET CONFIRMANDO QUE EL USUARIO SE HA ELIMINADO
+            if ($respuesta == "ok") {
+                echo '<script>
+
+                swal({
+
+                    type: "success",
+                    title: "¡El usuario ha sido eliminado correctamente!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+
+                }).then((result)=>{
+                    if(result.value){
+                        window.location= "usuarios";
+                    }
+                });
                 </script>';
             }
         }

@@ -18,7 +18,7 @@
                   </button>
               </div>
               <div class="box-body">
-                  <table class="table table-bordered table-striped dt-responsive tablas">
+                  <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
                       <thead>
                           <tr>
                               <th style="width: 10px;">#</th>
@@ -39,6 +39,7 @@
 
                             $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
                             //RECORRIENDO LOS VALORES DE LA TABLA USUARIOS POR MEDIO DE FOREACH
+                            //Y MOSTRANDO LOS DATOS EN EL DATABLE
                             foreach ($usuarios as $key => $value) {
                                 echo '
                                     <tr>
@@ -67,8 +68,9 @@
                                                 data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i>
                                                 </button>
 
-                                                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                                            </div>
+                                                <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '" fotoUsuario="' . $value["foto"] . '" usuario="' . $value["usuario"] . '">
+                                                <i class="fa fa-times"></i></button>
+                                            </div> 
                                         </td>
                                     </tr>
                                    ';
@@ -98,21 +100,24 @@
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                  <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" required>
+                                  <input type="text" class="form-control input-lg" name="nuevoNombre"
+                                      placeholder="Ingresar nombre" required>
                               </div>
                           </div>
                           <!-- INPUT DE INGRESO DE NICKNAME DE USUARIO-->
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                  <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar usuario" required>
+                                  <input type="text" class="form-control input-lg" name="nuevoUsuario"
+                                      placeholder="Ingresar usuario" id="nuevoUsuario" required>
                               </div>
                           </div>
                           <!-- INPUT DE INGRESO DE CONTRASEÑA DE USUARIO-->
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                  <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar contraseña" required>
+                                  <input type="password" class="form-control input-lg" name="nuevoPassword"
+                                      placeholder="Ingresar contraseña" required>
                               </div>
                           </div>
                           <!-- SELECT DE INGRESO DE PERFIL DE USUARIO-->
@@ -134,7 +139,8 @@
                               </div>
                               <input type="file" name="nuevaFoto" class="nuevaFoto">
                               <p class="help-block">Peso máximo de la foto 2 MB</p>
-                              <img src="views/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+                              <img src="views/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar"
+                                  width="100px">
                           </div>
                       </div>
                   </div>
@@ -169,21 +175,24 @@
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                  <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" required>
+                                  <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre"
+                                      value="" required>
                               </div>
                           </div>
                           <!-- INPUT DE INGRESO DE NICKNAME DE USUARIO-->
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                  <input type="text" class="form-control input-lg" id="editarUsuario" name="editarUsuario" value="" readonly>
+                                  <input type="text" class="form-control input-lg" id="editarUsuario"
+                                      name="editarUsuario" value="" readonly>
                               </div>
                           </div>
                           <!-- INPUT DE INGRESO DE CONTRASEÑA DE USUARIO-->
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                  <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba nueva contraseña">
+                                  <input type="password" class="form-control input-lg" name="editarPassword"
+                                      placeholder="Escriba nueva contraseña">
                                   <input type="hidden" id="passwordActual" name="passwordActual">
                               </div>
                           </div>
@@ -206,7 +215,8 @@
                               </div>
                               <input type="file" class="nuevaFoto" name="editarFoto">
                               <p class="help-block">Peso máximo de la foto 2 MB</p>
-                              <img src="views/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+                              <img src="views/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar"
+                                  width="100px">
                               <input type="hidden" name="fotoActual" id="fotoActual">
                           </div>
                       </div>
@@ -224,3 +234,7 @@
           </div>
       </div>
   </div>
+  <?php
+                    $eliminarUsuario = new ControladorUsuarios();
+                    $eliminarUsuario->ctrEliminarUsuario();
+                    ?>

@@ -32,7 +32,13 @@ $(".nuevaFoto").change(function () {
   }
 });
 // EDITAR USUARIO
-$(".btnEditarUsuario").click(function () {
+
+//ARREGLANDO LA ACCIÓN EDITAR USUARIO CUANDO EL DATATABLE ESTE EN OTRA RESOLUCIÓN
+// QUE REQUIERA EXPANDIR EL BOTÓN MÁS DEL USUARIO
+
+//CUANDO EL DOCUMENTO ESTÉ CARGADO VA A BUSCAR LA CLASE BTN
+// Y CUANDO LA ENCUENTRE CARGUE LOS VALORES DEL USUARIOA AL FORMULARIO DEL USUARIO
+$(document).on("click", ".btnEditarUsuario", function () {
   var idUsuario = $(this).attr("idUsuario");
 
   //EXTRAYENDO EL ID DEL USUARIO A EDITAR PARA MAS FACILIDAD
@@ -65,7 +71,14 @@ $(".btnEditarUsuario").click(function () {
 });
 
 //ACTIVAR USUARIO
-$(".btnActivar").click(function () {
+
+//ARREGLANDO LA ACCIÓN ACTIVAR USUARIO CUANDO EL DATATABLE ESTE EN OTRA RESOLUCIÓN
+// QUE REQUIERA EXPANDIR EL BOTÓN MÁS DEL USUARIO
+
+//CUANDO EL DOCUMENTO ESTÉ CARGADO VA A BUSCAR LA CLASE BTN
+// Y CUANDO LA ENCUENTRE ACTIVE EL USUARIO QUE ESTÁ DESACTIVADO Y VICEVERSA
+$(document).on("click", ".btnActivar", function (){
+
   var idUsuario = $(this).attr("idUsuario");
   var estadoUsuario = $(this).attr("estadoUsuario");
 
@@ -79,18 +92,94 @@ $(".btnActivar").click(function () {
     cache: false,
     contentType: false,
     processData: false,
-    success: function (respuesta) {},
+    success: function (respuesta) {
+      //ARREGLANDO BOTON ACTIVAR/DESACTIVAR USUARIO EN UNA RESOLUCION PEQUEÑA 
+      //MAXIMA DE 767 PX(DISPOSITIVOS MÓVILES)
+      if(window.matchMedia("(max-width:767px)").matches){
+
+        swal({
+          type: "success",
+          title: "¡El usuario ha sido editado correctamente!",
+          confirmButtonText: "Cerrar",
+
+        }).then(function (result) {
+          if(result.value){
+              window.location= "usuarios";
+          }
+      });
+
+      }
+    },
   });
   if (estadoUsuario == 0) {
     $(this).removeClass("btn-success");
     $(this).addClass("btn-danger");
     $(this).html("Desactivado");
     $(this).attr("estadoUsuario", 1);
-  }
-  else{
+  } else {
     $(this).removeClass("btn-danger");
     $(this).addClass("btn-success");
     $(this).html("Activado");
     $(this).attr("estadoUsuario", 0);
   }
+});
+
+// REVISAR SI EL USUARIO QUE SU NICKNAME DE USUARIO NO SEA REPETIDO
+$("#nuevoUsuario").change(function () {
+  $(".alert").remove();
+  var usuario = $(this).val();
+  var datos = new FormData();
+  datos.append("validarUsuario", usuario);
+  $.ajax({
+    url: "ajax/usuarios.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (respuesta) {
+      if (respuesta) {
+        $("#nuevoUsuario")
+          .parent()
+          .after(
+            '<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>'
+          );
+        $("#nuevoUsuario").val("");
+      }
+    },
+  });
+});
+
+// ELIMINAR USUARIOS
+//ARREGLANDO LA ACCIÓN ELIMINAR USUARIO CUANDO EL DATATABLE ESTE EN OTRA RESOLUCIÓN
+// QUE REQUIERA EXPANDIR EL BOTÓN MÁS DEL USUARIO
+
+//CUANDO EL DOCUMENTO ESTÉ CARGADO VA A BUSCAR LA CLASE BTN
+// Y CUANDO LA ENCUENTRE ELIMINE EL USUARIO 
+$(document).on("click", ".btnEliminarUsuario", function () {
+  var idUsuario = $(this).attr("idUsuario");
+  var fotoUsuario = $(this).attr("fotoUsuario");
+  var usuario = $(this).attr("usuario");
+  swal({
+    type: "warning",
+    text: "¡Si no lo está puede cancelar la acción!",
+    title: "¿Está seguro de borrar el usuario?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, borrar usuario!",
+  }).then(function (result) {
+    if (result.value) {
+      //OCUPANDO VARIABLES GET PARA ENVIAR ID Y RUTA DE FOTO PARA SU ELIMINACION
+      window.location =
+        "index.php?ruta=usuarios&idUsuario=" +
+        idUsuario +
+        "&usuario=" +
+        usuario +
+        "&fotoUsuario=" +
+        fotoUsuario;
+    }
+  });
 });

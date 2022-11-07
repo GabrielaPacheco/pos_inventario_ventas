@@ -31,6 +31,17 @@ class AjaxUsuarios
 
         $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
     }
+
+    public $validarUsuario;
+
+    public function ajaxValidarUsuario()
+    {
+        $item = "usuario";
+        $valor = $this->validarUsuario;
+        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+        echo json_encode($respuesta);
+    }
 }
 // EDITAR USUARIO CARGANDO A FORMULARIO DE EDITAR USUARIO LOS CAMPOS EN CAJITAS
 if (isset($_POST["idUsuario"])) {
@@ -44,4 +55,10 @@ if (isset($_POST["activarUsuario"])) {
     $activarUsuario->activarUsuario = $_POST["activarUsuario"];
     $activarUsuario->activarId = $_POST["activarId"];
     $activarUsuario->ajaxActivarUsuario();
+}
+// VALIDAR NO REPETIR USUARIO YA QUE EL USUARIO ES UNICO
+if (isset($_POST["validarUsuario"])) {
+    $validarUsuario = new AjaxUsuarios();
+    $validarUsuario->validarUsuario = $_POST["validarUsuario"];
+    $validarUsuario->ajaxValidarUsuario();
 }

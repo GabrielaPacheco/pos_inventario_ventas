@@ -22,8 +22,7 @@ session_start();
     <!-- AdminLTE Skins. -->
     <link rel="stylesheet" href="views/dist/css/skins/_all-skins.min.css">
     <!-- Google Font -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <!-- DataTables -->
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
@@ -45,6 +44,10 @@ session_start();
     <script src="views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
     <!-- SweetAlert 2 -->
     <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+    <!--SweetAlert2 doesn't work on IE 11, Promise is not defined-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
 </head>
 
 <!-- CUERPO DOCUMENTO -->
@@ -91,6 +94,7 @@ session_start();
     ?>
 
     <script src="views/js/plantilla.js"></script>
+    <script src="views/js/usuarios.js"></script>
 
 </body>
 
