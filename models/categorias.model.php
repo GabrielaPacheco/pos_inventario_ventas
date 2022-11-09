@@ -18,7 +18,7 @@ class ModeloCategorias
     }
 
 
-    // MOSTRAR USUARIOS
+    // MOSTRAR CATEGORIAS
 
     static public function mdlMostrarCategorias($tabla, $item, $valor)
     {
