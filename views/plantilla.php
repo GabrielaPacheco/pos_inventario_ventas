@@ -26,6 +26,8 @@ session_start();
     <!-- DataTables -->
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="views/plugins/iCheck/all.css">
 
     <!-- PLUGINS DE JAVASCRIPT -->
 
@@ -44,9 +46,10 @@ session_start();
     <script src="views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
     <!-- SweetAlert 2 -->
     <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
-
     <!--SweetAlert2 doesn't work on IE 11, Promise is not defined-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="views/plugins/iCheck/icheck.min.js"></script>
 
 </head>
 
