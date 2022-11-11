@@ -34,7 +34,7 @@ $(".btnEditarCategoria").click(function () {
   var datos = new FormData();
   datos.append("idCategoria", idCategoria);
 
-  //CARGANDO LOS VALORES A LA CAJA DE TEXTO DE LA CATEOGIRA SELECCIONADA AL MODAL DE EDITAR CATEGORIA
+  //CARGANDO LOS VALORES A LA CAJA DE TEXTO DE LA CATEGORIA SELECCIONADA AL MODAL DE EDITAR CATEGORIA
   $.ajax({
     url: "ajax/categorias.ajax.php",
     method: "POST",
