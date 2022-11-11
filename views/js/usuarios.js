@@ -14,6 +14,7 @@ $(".nuevaFoto").change(function () {
     });
     //VALIDANDO QUE FOTO SEA COMO MÁXIMO 2 MB CON SIZE EN BYTES
   } else if (imagen["size"] > 2000000) {
+    $(".nuevaFoto").val("");
     swal({
       type: "error",
       text: "¡La imagen no debe pesar más de 2MB!",
