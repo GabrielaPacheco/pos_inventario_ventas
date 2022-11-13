@@ -22,7 +22,8 @@ session_start();
     <!-- AdminLTE Skins. -->
     <link rel="stylesheet" href="views/dist/css/skins/_all-skins.min.css">
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <!-- DataTables -->
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
@@ -50,6 +51,10 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- iCheck 1.0.1 -->
     <script src="views/plugins/iCheck/icheck.min.js"></script>
+    <!-- InputMask -->
+    <script src="views/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="views/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="views/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 </head>
 
