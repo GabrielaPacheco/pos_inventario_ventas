@@ -37,14 +37,14 @@
                     <tbody>
                         <?php
 
-                          $item = null;
-                          $valor = null;
+                        $item = null;
+                        $valor = null;
 
-                          $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
-                          //RECORRIENDO LOS VALORES DE LA TABLA CLIENTES POR MEDIO DE FOREACH
-                          //Y MOSTRANDO LOS DATOS EN EL DATABLE
-                          foreach ($clientes as $key => $value) {
-                              echo ' <tr>
+                        $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
+                        //RECORRIENDO LOS VALORES DE LA TABLA CLIENTES POR MEDIO DE FOREACH
+                        //Y MOSTRANDO LOS DATOS EN EL DATABLE
+                        foreach ($clientes as $key => $value) {
+                            echo ' <tr>
                                 <td>' . ($key + 1) . '</td>
                                 <td>' . $value["nombre"] . '</td>
                                 <td>' . $value["documento"] . '</td>
@@ -57,13 +57,13 @@
                                 <td>' . $value["fecha"] . '</td>
                                 <td>
                               <div class="btn-group">
-                                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
+                                  <button class="btn btn-danger btnEliminarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
                               </div>
                           </td>
                                 ';
-                          }
-                          ?>
+                        }
+                        ?>
                         </tr>
                     </tbody>
                 </table>
@@ -144,9 +144,92 @@
                 </div>
             </form>
             <?php
-              $crearCliente = new ControladorClientes();
-              $crearCliente->ctrCrearCliente();
-              ?>
+            $crearCliente = new ControladorClientes();
+            $crearCliente->ctrCrearCliente();
+            ?>
         </div>
     </div>
 </div>
+
+<!-- MODAL EDITAR CLIENTE -->
+<div id="modalEditarCliente" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" method="post">
+                <!-- HEADER DE MODAL -->
+                <div class="modal-header" style="background: #3c8dbc; color: white;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Cliente</h4>
+                </div>
+                <!-- BODY DEL MODAL -->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- INPUT DE NOMBRE DE CLIENTE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control input-lg" name="editarCliente" id="editarCliente"
+                                    required>
+                                    <input type="hidden" name="idCliente" id="idCliente">
+                            </div>
+                        </div>
+                        <!-- INPUT DE DOCUMENTO DE IDENTIDAD -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input type="number" min="0" class="form-control input-lg" name="editarDocumentoId"
+                                    id="editarDocumentoId" required>
+                            </div>
+                        </div>
+                        <!-- INPUT DE EMAIL DE CLIENTE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" class="form-control input-lg" name="editarEmail" id="editarEmail"
+                                    required>
+                            </div>
+                        </div>
+                        <!-- INPUT DE TELÉFONO DE CLIENTE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control input-lg" name="editarTelefono"
+                                    id="editarTelefono" data-inputmask="'mask':'(999) 9999-9999'" data-mask required>
+                            </div>
+                        </div>
+                        <!-- INPUT DE DIRECCIÓN DE CLIENTE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                <input type="text" class="form-control input-lg" name="editarDireccion"
+                                    id="editarDireccion" required>
+                            </div>
+                        </div>
+                        <!-- INPUT DE FECHA DE NACIMIENTO DE CLIENTE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control input-lg" name="editarFechaNacimiento"
+                                    id="editarFechaNacimiento" data-inputmask="'alias':'yyyy/mm/dd'" data-mask required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FOOTER DEL MODAL -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+            <?php
+            $editarCliente = new ControladorClientes();
+            $editarCliente->ctrEditarCliente();
+            ?>
+        </div>
+    </div>
+</div>
+
+<?php
+    $eliminarCliente = new ControladorClientes();
+    $eliminarCliente->ctrEliminarCliente();
+    ?>

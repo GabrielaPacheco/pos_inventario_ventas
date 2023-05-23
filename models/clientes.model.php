@@ -40,5 +40,39 @@ class ModeloClientes
 
         $stmt = null;
     }
+     // EDITAR CLIENTE
+     static public function mdlEditarCliente($tabla, $datos)
+     {
+         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, documento=:documento, email=:email, 
+         telefono=:telefono, direccion=:direccion, fecha_nacimiento=:fecha_nacimiento WHERE id=:id");
+         
+         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":documento", $datos["documento"], PDO::PARAM_INT); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+         $stmt->bindParam(":fecha_nacimiento", $datos["fecha_nacimiento"], PDO::PARAM_STR); //ENLAZANDO PARAMETROS
+        
+         if ($stmt->execute()) {
+             return "ok";
+         } else {
+             return "error";
+         }
+         $stmt = null;
+     }
+
+     // ELIMINAR CLIENTES
+    static public function mdlEliminarCliente($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id  = :id");
+        $stmt->bindParam(":id", $datos, PDO::PARAM_INT); //ENLAZANDO PARAMETROS
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt = null;
+    }
 
 }
