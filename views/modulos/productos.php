@@ -185,7 +185,7 @@
                           <div class="form-group">
                               <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
-                                  <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" id="editarDescripcion" required>
+                                  <input type="text" class="form-control input-lg" name="editarDescripcion" id="editarDescripcion" required>
                               </div>
                           </div>
                           <!-- INPUT DE INGRESO DE STOCK-->
