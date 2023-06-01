@@ -6,6 +6,7 @@ class AjaxProductos
     //GENERANDO CÓDIGO A PARTIR DE ID CATEGORÍA
     public $idCategoria;
     public $traerProductos;
+    public $nombreProducto;
     public function ajaxCrearCodigoProducto()
     {
         $item = "id_categoria";
@@ -19,26 +20,34 @@ class AjaxProductos
     public $idProducto;
     public function ajaxEditarProducto()
     {
-        if($this->traerProductos == "ok"){
+        if ($this->traerProductos == "ok") {
             //TRAER TODOS LOS PRODUCTOS PARA QUE LOS MUESTRE EN EL BOTÓN DE DISPOSITIVOS
             $item = null;
             $valor = null;
 
             $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
 
-            echo json_encode($respuesta); 
-        }
+            echo json_encode($respuesta);
 
-        else{
+        } 
+        else if ($this->nombreProducto != "") {
+            //SE OCUPA ESTA PARTE PARA QUE NOS MUESTRE LOS PRODUCTOS CLASIFICADOS POR SU DESCRIPCIÓN
+            $item = "descripcion";
+            $valor = $this->nombreProducto;
+
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+
+            echo json_encode($respuesta);
+        } 
+        else {
             $item = "id";
             $valor = $this->idProducto;
 
             $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
-    
+
             echo json_encode($respuesta);
         }
-        }
-       
+    }
 }
 // GENERAR CÓDIGO A PARTIR DE ID CATEGORÍA 
 if (isset($_POST["idCategoria"])) {
@@ -57,6 +66,13 @@ if (isset($_POST["idProducto"])) {
 // TRAER PRODUCTO 
 if (isset($_POST["traerProductos"])) {
     $traerProductos = new AjaxProductos();
-    $traerProductos->idProducto = $_POST["traerProductos"];
+    $traerProductos->traerProductos = $_POST["traerProductos"];
     $traerProductos->ajaxEditarProducto();
+}
+
+// TRAER PRODUCTO 
+if (isset($_POST["nombreProducto"])) {
+    $nombreProducto = new AjaxProductos();
+    $nombreProducto->nombreProducto = $_POST["nombreProducto"];
+    $nombreProducto->ajaxEditarProducto();
 }
