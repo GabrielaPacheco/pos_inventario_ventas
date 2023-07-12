@@ -85,7 +85,7 @@
                                   <div class="form-group row nuevoProducto">
                                   </div>
                                   <!-- BOTÓN PARA AGREGAR PRODUCTO-->
-                                  <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
+                                  <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar Producto</button>
                                   <hr>
                                   <div class="row">
                                       <!--ENTRADA IMPUESTOS Y TOTAL-->
