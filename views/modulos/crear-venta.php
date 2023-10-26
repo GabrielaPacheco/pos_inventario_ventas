@@ -84,8 +84,12 @@
 
                                   <div class="form-group row nuevoProducto">
                                   </div>
+
+                                  <input type="hidden" id="listaProductos" name="listaProductos">
+
                                   <!-- BOTÓN PARA AGREGAR PRODUCTO-->
-                                  <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar Producto</button>
+                                  <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar
+                                      Producto</button>
                                   <hr>
                                   <div class="row">
                                       <!--ENTRADA IMPUESTOS Y TOTAL-->
@@ -136,12 +140,8 @@
                                               </select>
                                           </div>
                                       </div>
-                                      <div class="col-xs-6" style="padding-left:0px">
-                                          <div class="input-group">
-                                              <input type="text" class="form-control" name="nuevoCodigoTransaccion" id="nuevoCodigoTransaccion" placeholder="Código Transacción" required>
-                                              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                          </div>
-                                      </div>
+                                      <div class="cajasMetodoPago"></div>
+                                      <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
                                   </div>
                                   <br>
                               </div>
