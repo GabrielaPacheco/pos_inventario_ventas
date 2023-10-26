@@ -193,6 +193,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function () {
   if ($(".nuevoProducto").children().length == 0) {
     $("#nuevoTotalVenta").val(0);
     $("#nuevoImpuestoVenta").val(0);
+    $("#totalVenta").val(0);
     $("#nuevoTotalVenta").attr("total", 0);
   } else {
     // SUMAR TOTAL DE PRECIOS
@@ -423,7 +424,7 @@ function sumarTotalPrecios() {
   var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
 
   $("#nuevoTotalVenta").val(sumaTotalPrecio);
-  //$("#totalVenta").val(sumaTotalPrecio);
+  $("#totalVenta").val(sumaTotalPrecio);
   $("#nuevoTotalVenta").attr("total", sumaTotalPrecio);
 }
 
@@ -441,7 +442,7 @@ function agregarImpuesto() {
 
   $("#nuevoTotalVenta").val(totalConImpuesto);
 
-  //$("#totalVenta").val(totalConImpuesto);
+  $("#totalVenta").val(totalConImpuesto);
 
   $("#nuevoPrecioImpuesto").val(precioImpuesto);
 
@@ -539,6 +540,15 @@ $(".formularioVenta").on("change", "input#nuevoValorEfectivo", function () {
 });
 
 /*=============================================
+CAMBIO TRANSACCIÓN
+=============================================*/
+$(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function () {
+  // Listar método en la entrada
+  listarMetodos();
+});
+
+
+/*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
@@ -566,4 +576,22 @@ function listarProductos() {
   $("#listaProductos").val(JSON.stringify(listaProductos));
 
   console.log("listaProductos", JSON.stringify(listaProductos));
+}
+
+/*=============================================
+LISTAR MÉTODO DE PAGO
+=============================================*/
+
+function listarMetodos() {
+
+ 
+  var listaMetodos = "";
+ //Capturando el tipo de método de pago ya sea efectivo ,tc,td(tarjetas)
+  if ($("#nuevoMetodoPago").val() == "Efectivo") {
+    $("#listaMetodoPago").val("Efectivo");
+  } else {
+    $("#listaMetodoPago").val(
+      $("#nuevoMetodoPago").val() + "-" + $("#nuevoCodigoTransaccion").val()
+    );
+  }
 }

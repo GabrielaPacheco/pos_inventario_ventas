@@ -32,7 +32,7 @@
                                           <input type="hidden" name="idVendedor" value="<?php echo  $_SESSION["id"] ?>">
                                       </div>
                                   </div>
-
+                                  <!-- ENTRADA DEL CODIGO -->
                                   <div class="form-group">
                                       <div class="input-group">
                                           <span class="input-group-addon"><i class="fa fa-key"></i></span>
@@ -150,6 +150,12 @@
                               <button type="submit" class="btn btn-primary pull-right">Guardar venta</button>
                           </div>
                       </form>
+                      <?php
+
+                        $guardarVenta = new ControladorVentas();
+                        $guardarVenta->ctrCrearVenta();
+
+                        ?>
                   </div>
               </div>
 
