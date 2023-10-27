@@ -584,7 +584,6 @@ LISTAR MÉTODO DE PAGO
 
 function listarMetodos() {
 
- 
   var listaMetodos = "";
  //Capturando el tipo de método de pago ya sea efectivo ,tc,td(tarjetas)
   if ($("#nuevoMetodoPago").val() == "Efectivo") {
@@ -595,3 +594,46 @@ function listarMetodos() {
     );
   }
 }
+
+/*=============================================
+BOTON EDITAR VENTA
+=============================================*/
+$(".tablas").on("click", ".btnEditarVenta", function () {
+  var idVenta = $(this).attr("idVenta");
+
+  window.location = "index.php?ruta=editar-venta&idVenta=" + idVenta;
+});
+
+/*=============================================
+FUNCIÓN PARA DESACTIVAR LOS BOTONES AGREGAR CUANDO EL PRODUCTO YA HABÍA SIDO SELECCIONADO EN LA CARPETA
+=============================================*/
+
+function quitarAgregarProducto() {
+  //Capturamos todos los id de productos que fueron elegidos en la venta
+  var idProductos = $(".quitarProducto");
+
+  //Capturamos todos los botones de agregar que aparecen en la tabla
+  var botonesTabla = $(".tablaVentas tbody button.agregarProducto");
+
+  //Recorremos en un ciclo para obtener los diferentes idProductos que fueron agregados a la venta
+  for (var i = 0; i < idProductos.length; i++) {
+    //Capturamos los Id de los productos agregados a la venta
+    var boton = $(idProductos[i]).attr("idProducto");
+
+    //Hacemos un recorrido por la tabla que aparece para desactivar los botones de agregar
+    for (var j = 0; j < botonesTabla.length; j++) {
+      if ($(botonesTabla[j]).attr("idProducto") == boton) {
+        $(botonesTabla[j]).removeClass("btn-primary agregarProducto");
+        $(botonesTabla[j]).addClass("btn-default");
+      }
+    }
+  }
+}
+
+/*=============================================
+CADA VEZ QUE CARGUE LA TABLA CUANDO NAVEGAMOS EN ELLA EJECUTAR LA FUNCIÓN:
+=============================================*/
+
+$(".tablaVentas").on("draw.dt", function () {
+  quitarAgregarProducto();
+});
