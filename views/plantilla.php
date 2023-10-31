@@ -29,6 +29,9 @@ session_start();
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="views/plugins/iCheck/all.css">
+    <!--Daterange picker -->
+    <link rel="stylesheet" href="views/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
 
     <!-- PLUGINS DE JAVASCRIPT -->
 
@@ -57,6 +60,10 @@ session_start();
     <script src="views/plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- jQuery Number -->
     <script src="views/plugins/jqueryNumber/jquerynumber.min.js"></script>
+     <!--Daterange picker -->
+     <script src="views/bower_components/moment/min/moment.min.js"></script>
+     <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.css"></script>
+
 </head>
 
 <!-- CUERPO DOCUMENTO -->
