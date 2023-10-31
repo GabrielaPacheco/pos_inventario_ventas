@@ -62,7 +62,7 @@ session_start();
     <script src="views/plugins/jqueryNumber/jquerynumber.min.js"></script>
      <!--Daterange picker -->
      <script src="views/bower_components/moment/min/moment.min.js"></script>
-     <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.css"></script>
+     <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 </head>
 
