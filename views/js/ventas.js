@@ -720,9 +720,7 @@ $("#daterange-btn").daterangepicker(
 /*=============================================
 CANCELAR RANGO DE FECHAS
 =============================================*/
-$(".daterangepicker .range_inputs .cancelBtn").on("click", function () {
-  var codigoVenta = $(this).attr("codigoVenta");
-
+$(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function () {
   localStorage.removeItem("capturarRango");
   localStorage.clear();
   window.location = "ventas";
@@ -731,7 +729,7 @@ $(".daterangepicker .range_inputs .cancelBtn").on("click", function () {
 /*=============================================
 CAPTURAR HOY
 =============================================*/
-$(".daterangepicker .ranges li").on("click", function () {
+$(".daterangepicker.opensleft .ranges li").on("click", function () {
   var textoHoy = $(this).attr("data-range-key");
   if (textoHoy == "Hoy") {
     var d = new Date();
