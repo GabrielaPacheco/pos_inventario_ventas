@@ -116,6 +116,7 @@ session_start();
     <script src="views/js/productos.js"></script>
     <script src="views/js/clientes.js"></script>
     <script src="views/js/ventas.js"></script>
+    <script src="views/js/reportes.js"></script>
 </body>
 
 </html>
