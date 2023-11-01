@@ -22,8 +22,7 @@ session_start();
     <!-- AdminLTE Skins. -->
     <link rel="stylesheet" href="views/dist/css/skins/_all-skins.min.css">
     <!-- Google Font -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <!-- DataTables -->
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
@@ -31,6 +30,8 @@ session_start();
     <link rel="stylesheet" href="views/plugins/iCheck/all.css">
     <!--Daterange picker -->
     <link rel="stylesheet" href="views/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="views/bower_components/morris.js/morris.css">
 
 
     <!-- PLUGINS DE JAVASCRIPT -->
@@ -60,9 +61,12 @@ session_start();
     <script src="views/plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- jQuery Number -->
     <script src="views/plugins/jqueryNumber/jquerynumber.min.js"></script>
-     <!--Daterange picker -->
-     <script src="views/bower_components/moment/min/moment.min.js"></script>
-     <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!--Daterange picker -->
+    <script src="views/bower_components/moment/min/moment.min.js"></script>
+    <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Morris.js charts -->
+    <script src="views/bower_components/raphael/raphael.min.js"></script>
+    <script src="views/bower_components/morris.js/morris.min.js"></script>
 
 </head>
 
