@@ -11,7 +11,8 @@ class AjaxProductos
     {
         $item = "id_categoria";
         $valor = $this->idCategoria;
-        $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+        $orden = "id";
+        $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
         echo json_encode($respuesta);
     }
@@ -24,26 +25,26 @@ class AjaxProductos
             //TRAER TODOS LOS PRODUCTOS PARA QUE LOS MUESTRE EN EL BOTÓN DE DISPOSITIVOS
             $item = null;
             $valor = null;
+            $orden = "id";
 
-            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
             echo json_encode($respuesta);
-
-        } 
-        else if ($this->nombreProducto != "") {
+        } else if ($this->nombreProducto != "") {
             //SE OCUPA ESTA PARTE PARA QUE NOS MUESTRE LOS PRODUCTOS CLASIFICADOS POR SU DESCRIPCIÓN
             $item = "descripcion";
             $valor = $this->nombreProducto;
+            $orden = "id";
 
-            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
             echo json_encode($respuesta);
-        } 
-        else {
+        } else {
             $item = "id";
             $valor = $this->idProducto;
+            $orden = "id";
 
-            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor,$orden);
 
             echo json_encode($respuesta);
         }
