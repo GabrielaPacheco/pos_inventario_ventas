@@ -5,15 +5,15 @@ class ModeloProductos
 {
     // MOSTRAR PRODUCTOS
 
-    static public function mdlMostrarProductos($tabla, $item, $valor)
+    static public function mdlMostrarProductos($tabla, $item, $valor, $orden)
     {
         if ($item != null) {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC"); //SE DEBE DE ENLAZAR PARAMETRO $item
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY $orden DESC"); //SE DEBE DE ENLAZAR PARAMETRO $item
             $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR); //ENLAZANDO PARAMETRO
             $stmt->execute();
             return $stmt->fetch(); //RETORNANDO UN SOLO ITEM DE NUESTRA TABLA
         } else {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $orden DESC");
             $stmt->execute();
             return $stmt->fetchAll(); //RETORNANDO TODOS LOS VALORES DE LA TABLA
         }
@@ -94,6 +94,17 @@ class ModeloProductos
             return "error";
         }
 
+        $stmt = null;
+    }
+    
+    /*=============================================
+	MOSTRAR SUMA VENTAS
+	=============================================*/
+    static public function mdlMostrarSumaVentas($tabla)
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT SUM(ventas) as total FROM $tabla");
+        $stmt->execute();
+        return $stmt->fetch();
         $stmt = null;
     }
 }

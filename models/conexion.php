@@ -13,6 +13,7 @@ class Conexion
         $link->exec("set names utf8"); //METODO EXEC PARA QUE RECIBA CUALQUIERA DE LOS CARACTERES LATINOS
 
         return $link;
+        
     }
     
 }
