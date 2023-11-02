@@ -13,17 +13,16 @@ foreach ($ventas as $key => $valueVentas) {
     foreach ($usuarios as $key => $valueUsuarios) {
 
         if ($valueUsuarios["id"] == $valueVentas["id_vendedor"]) {
-            
+
             //Capturamos los vendedores en un array
             array_push($arrayVendedores, $valueUsuarios["nombre"]);
 
             //Capturamos los nombres y los valores netos en un mismo array
             $arrayListaVendedores = array($valueUsuarios["nombre"] => $valueVentas["neto"]);
-            
-        }
-        //Sumar los netos de cada vendedor
-        foreach ($arrayListaVendedores as $key => $value) {
-            $sumaTotalVendedores[$key] += $value;
+            //Sumar los netos de cada vendedor
+            foreach ($arrayListaVendedores as $key => $value) {
+                $sumaTotalVendedores[$key] += $value;
+            }
         }
     }
 }
