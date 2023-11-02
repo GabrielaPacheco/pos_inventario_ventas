@@ -6,4 +6,4 @@ Herramientas que se utilizaron:
 
 Plantilla AdminLTE: Excelente plantilla «open source» para la creación de software responsivos.
 jQuery DataTable: Plugin para la creación de tablas dinámicas.
-Muchas más herramientas: jQuery Number, jQuery iCheck, SweetAlert2, jQuery Input Mask, Fast Click, Ionicons, HTML5, CSS3, entre otras.
+Muchas más herramientas: jQuery Number, jQuery iCheck, SweetAlert2, jQuery Input Mask, Fast Click, Ionicons, HTML5, CSS3, entre otras funcionalidades más que las descubriran al usar el sistema.
