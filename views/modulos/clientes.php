@@ -57,9 +57,12 @@
                                 <td>' . $value["fecha"] . '</td>
                                 <td>
                               <div class="btn-group">
-                                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
-                                  <button class="btn btn-danger btnEliminarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
-                              </div>
+                                  <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>';
+                            if ($_SESSION["perfil"] == "Administrador") {
+                                echo '
+                                  <button class="btn btn-danger btnEliminarCliente" idCliente="' . $value["id"] . '"><i class="fa fa-times"></i></button>';
+                            }
+                            echo '</div>
                           </td>
                                 ';
                         }
@@ -89,50 +92,42 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control input-lg" name="nuevoCliente"
-                                    placeholder="Ingresar nombre" required>
+                                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre" required>
                             </div>
                         </div>
                         <!-- INPUT DE DOCUMENTO DE IDENTIDAD -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumento"
-                                    placeholder="Ingresar documento" required>
+                                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumento" placeholder="Ingresar documento" required>
                             </div>
                         </div>
                         <!-- INPUT DE EMAIL DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" class="form-control input-lg" name="nuevoEmail"
-                                    placeholder="Ingresar email" required>
+                                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
                             </div>
                         </div>
                         <!-- INPUT DE TELÉFONO DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="text" class="form-control input-lg" name="nuevoTelefono"
-                                    placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 9999-9999'" data-mask
-                                    required>
+                                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 9999-9999'" data-mask required>
                             </div>
                         </div>
                         <!-- INPUT DE DIRECCIÓN DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                <input type="text" class="form-control input-lg" name="nuevaDireccion"
-                                    placeholder="Ingresar dirección" required>
+                                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
                             </div>
                         </div>
                         <!-- INPUT DE FECHA DE NACIMIENTO DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" class="form-control input-lg" name="nuevoFechaNacimiento"
-                                    placeholder="Ingresar fecha nacimiento" data-inputmask="'alias':'yyyy/mm/dd'"
-                                    data-mask required>
+                                <input type="text" class="form-control input-lg" name="nuevoFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias':'yyyy/mm/dd'" data-mask required>
                             </div>
                         </div>
                     </div>
@@ -168,49 +163,43 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control input-lg" name="editarCliente" id="editarCliente"
-                                    required>
-                                    <input type="hidden" name="idCliente" id="idCliente">
+                                <input type="text" class="form-control input-lg" name="editarCliente" id="editarCliente" required>
+                                <input type="hidden" name="idCliente" id="idCliente">
                             </div>
                         </div>
                         <!-- INPUT DE DOCUMENTO DE IDENTIDAD -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <input type="number" min="0" class="form-control input-lg" name="editarDocumentoId"
-                                    id="editarDocumentoId" required>
+                                <input type="number" min="0" class="form-control input-lg" name="editarDocumentoId" id="editarDocumentoId" required>
                             </div>
                         </div>
                         <!-- INPUT DE EMAIL DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" class="form-control input-lg" name="editarEmail" id="editarEmail"
-                                    required>
+                                <input type="email" class="form-control input-lg" name="editarEmail" id="editarEmail" required>
                             </div>
                         </div>
                         <!-- INPUT DE TELÉFONO DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="text" class="form-control input-lg" name="editarTelefono"
-                                    id="editarTelefono" data-inputmask="'mask':'(999) 9999-9999'" data-mask required>
+                                <input type="text" class="form-control input-lg" name="editarTelefono" id="editarTelefono" data-inputmask="'mask':'(999) 9999-9999'" data-mask required>
                             </div>
                         </div>
                         <!-- INPUT DE DIRECCIÓN DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                <input type="text" class="form-control input-lg" name="editarDireccion"
-                                    id="editarDireccion" required>
+                                <input type="text" class="form-control input-lg" name="editarDireccion" id="editarDireccion" required>
                             </div>
                         </div>
                         <!-- INPUT DE FECHA DE NACIMIENTO DE CLIENTE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" class="form-control input-lg" name="editarFechaNacimiento"
-                                    id="editarFechaNacimiento" data-inputmask="'alias':'yyyy/mm/dd'" data-mask required>
+                                <input type="text" class="form-control input-lg" name="editarFechaNacimiento" id="editarFechaNacimiento" data-inputmask="'alias':'yyyy/mm/dd'" data-mask required>
                             </div>
                         </div>
                     </div>
@@ -230,6 +219,6 @@
 </div>
 
 <?php
-    $eliminarCliente = new ControladorClientes();
-    $eliminarCliente->ctrEliminarCliente();
-    ?>
+$eliminarCliente = new ControladorClientes();
+$eliminarCliente->ctrEliminarCliente();
+?>
