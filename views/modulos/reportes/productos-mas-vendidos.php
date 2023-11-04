@@ -42,7 +42,7 @@ $totalVentas = ControladorProductos::ctrMostrarSumaVentas();
 
             <?php
             for ($i = 0; $i < 5; $i++) {
-                echo ' <li><a href="#">' . $productos[$i]["descripcion"] . '
+                echo ' <li><img src="' . $productos[$i]["imagen"] . '" alt="Product Image" width="50" height="50">  ' . $productos[$i]["descripcion"] . '
                             <span class="pull-right text-' . $colores[$i] . '"><i class="fa fa-angle-down"></i>' . ceil($productos[$i]["ventas"] * 100 / $totalVentas["total"]) . '%</span></a></li>';
             }
             ?> </ul>

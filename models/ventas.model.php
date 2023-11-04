@@ -129,14 +129,29 @@ class ModeloVentas
             if ($fechaFinalMasUno ==  $fechaActualMasUno) {
                 $stmt->bindParam(":fechaInicial", $fechaInicial, PDO::PARAM_STR);
                 $stmt->bindParam(":fechaFinal", $fechaFinalMasUno, PDO::PARAM_STR);
-                
             } else {
                 $stmt->bindParam(":fechaInicial", $fechaInicial, PDO::PARAM_STR);
                 $stmt->bindParam(":fechaFinal", $fechaFinal, PDO::PARAM_STR);
             }
 
             $stmt->execute();
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(); 
+            $stmt = null;
         }
+    }
+
+    /*=============================================
+	SUMA TOTAL VENTAS
+	=============================================*/
+
+    static public function mdlSumaTotalVentas($tabla)
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT SUM(neto) as total FROM $tabla");
+        
+        $stmt->execute();
+       
+        return $stmt->fetch();
+
+        $stmt = null;
     }
 }
