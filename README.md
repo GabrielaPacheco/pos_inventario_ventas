@@ -1,4 +1,5 @@
-# pos_inventario_ventas
+# pos_inventario_ventas 
+FINALIZADO
 
 Sistema POS(Point of Sale) inventarios y ventas con PHP 8 y AdminLTE integrando varios recursos bajo el patrón Modelo-Vista-Controlador con Programación Orientada a Objetos y utilizando bases de datos MySQL.
 
