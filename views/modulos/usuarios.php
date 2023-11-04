@@ -1,4 +1,13 @@
-  <!-- Content Wrapper. Contains page content -->
+<?php
+if ($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor") {
+echo '
+<script> window.location = "inicio";
+</script>' ;
+return ;
+}
+?> 
+ 
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
